@@ -36,8 +36,8 @@ def simple_predict(timestamp:datetime, scaler:MinMaxScaler, model, type) -> floa
 
     # data.to_csv('mining_models/base_miner_data.csv')
     input = matching_row[['Open', 'High', 'Low', 'Volume', 'SMA_50', 'SMA_200', 'RSI', 'CCI', 'Momentum', 'Close']]
-
-    return np.array([[input['Close'].iloc[0]]])
+    prediction = input['Close'].iloc[0] + np.random.normal()
+    return np.array([[prediction]])
 
 
 def predict(timestamp:datetime, scaler:MinMaxScaler, model, type) -> float:
