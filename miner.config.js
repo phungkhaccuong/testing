@@ -1,9 +1,9 @@
 module.exports = {
   apps: [
     {
-      name: 'WL1_sn28_hk1',
+      name: 'miner',
       script: 'python3',
-      args: './neurons/miner.py --netuid 28 --logging.debug --subtensor.network finney --wallet.name wl1 --wallet.hotkey hk1 --axon.port 28111 --model base_lstm.h5 --blacklist.force_validator_permit --neuron.device cuda:1'
+      args: './neurons/miner.py --netuid 28 --logging.debug --logging.trace --subtensor.network local --wallet.name walletName --wallet.hotkey hotkeyName --axon.port 8091 --model base_lstm.h5'
     },
   ],
 };
