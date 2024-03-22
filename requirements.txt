@@ -1,0 +1,16 @@
+bittensor==6.9.3
+loguru
+numpy
+pandas
+pydantic
+pytz
+rich
+scikit_learn
+setuptools
+starlette
+ta
+template
+tensorflow==2.15.0
+torch
+transformers
+yfinance
