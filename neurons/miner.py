@@ -53,8 +53,8 @@ class Miner(BaseMinerNeuron):
         print(config)
         # TODO(developer): Anything specific to your use case you can do here
         self.model_dir = f'./mining_models/{self.config.model}'
-        if self.config.neuron.device == 'cpu':
-            os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # This will force TensorFlow to use CPU only
+        # if self.config.neuron.device == 'cpu':
+        os.environ['CUDA_VISIBLE_DEVICES'] = '-1'  # This will force TensorFlow to use CPU only
 
     async def blacklist(
         self, synapse: predictionnet.protocol.Challenge
@@ -166,7 +166,7 @@ class Miner(BaseMinerNeuron):
 
         timestamp = synapse.timestamp
 
-        model = load_model(self.model_dir)
+        # model = load_model(self.model_dir)
         data = prep_data()
         scaler, _, _ = scale_data(data)
         #mse = create_and_save_base_model_lstm(scaler, X, y)
