@@ -174,7 +174,7 @@ class Miner(BaseMinerNeuron):
         # type needs to be changed based on the algo you're running
         # any algo specific change logic can be added to predict function in predict.py
         # prediction = predict(timestamp, scaler, model, type='lstm')
-        prediction = simple_predict(timestamp, scaler, model, type='lstm')
+        prediction = simple_predict(timestamp)
 
         #pred_np_array = np.array(prediction).reshape(-1, 1)
 

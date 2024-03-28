@@ -15,7 +15,7 @@ from base_miner.model import create_and_save_base_model_lstm, create_and_save_ba
 from base_miner.get_data import prep_data, scale_data, round_down_time
 
 
-def simple_predict(timestamp:datetime, scaler:MinMaxScaler, model, type) -> float:
+def simple_predict(timestamp:datetime) -> float:
     data = prep_data(drop_na=False)
 
     # Ensuring that the Datetime column in the data procured from yahoo finance is truly a datetime object
