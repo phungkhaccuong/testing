@@ -22,7 +22,7 @@ import time
 import typing
 import bittensor as bt
 
-from base_miner.predict import predict, simple_predict
+from base_miner.predict import predict, simple_predict, fast_predict
 from base_miner.get_data import prep_data, scale_data
 
 #import predictionnet
@@ -167,21 +167,26 @@ class Miner(BaseMinerNeuron):
         timestamp = synapse.timestamp
 
         # model = load_model(self.model_dir)
-        data = prep_data()
-        scaler, _, _ = scale_data(data)
+        data = prep_data()  # keeping this to delay the response
+        # scaler, _, _ = scale_data(data)
         #mse = create_and_save_base_model_lstm(scaler, X, y)
 
         # type needs to be changed based on the algo you're running
         # any algo specific change logic can be added to predict function in predict.py
         # prediction = predict(timestamp, scaler, model, type='lstm')
-        prediction = simple_predict(timestamp)
+
+        # predicting using the close price of matching 5m candle
+        # prediction = simple_predict(timestamp)
+
+        # predicting using the close price of last 1m candle
+        prediction = fast_predict()
 
         #pred_np_array = np.array(prediction).reshape(-1, 1)
 
         # logic to ensure that only past 20 day context exists in synapse
         synapse.prediction = prediction
 
-        bt.logging.success(
+        bt.logging.info(
             f"Predicted price 🎯: {synapse.prediction}"
         )
 
